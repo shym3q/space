@@ -1,7 +1,11 @@
+// #define WINDOW_WIDTH 1920u
+// #define WINDOW_HEIGHT 1080u
+
 #include "game.h"
+#include "../const.h"
 
 void Game::initWindow() {
-  window = new sf::RenderWindow{ {1920u, 1080u }, "Space" };
+  window = new sf::RenderWindow{{WINDOW_WIDTH, WINDOW_HEIGHT}, "Space"};
   window->setFramerateLimit(144);
 }
 
