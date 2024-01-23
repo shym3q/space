@@ -1,9 +1,9 @@
 #include <SFML/Graphics.hpp>
 
-class Character {
+class Entity {
 protected:
   int x, y;
-  sf::RectangleShape body;
 public:
+  sf::RectangleShape body;
   virtual void move() = 0;
 };

@@ -1,4 +1,3 @@
-#include <SFML/Graphics.hpp>
 #include "game.h"
 
 void Game::initWindow() {
@@ -8,18 +7,29 @@ void Game::initWindow() {
 
 Game::Game() {
   initWindow();
-
-  while(window->isOpen()) {
-    update();
-    render();
-  }
+  player.init();
 }
 
 Game::~Game() {
   delete window;
 }
 
+const bool Game::isRunning() const {
+  return window->isOpen();
+}
+
 void Game::update() {
+  pollEvents();
+  player.move();
+}
+
+void Game::render() {
+  window->clear();
+  window->draw(player.body);
+  window->display();
+}
+
+void Game::pollEvents() {
   while(window->pollEvent(event)) {
     switch(event.type) {
       case sf::Event::Closed:
@@ -33,9 +43,4 @@ void Game::update() {
         continue;
     }
   }
-}
-
-void Game::render() {
-  window->clear();
-  window->display();
 }

@@ -1,6 +1,10 @@
 #include "game/game.h"
 
 int main() {
-  Game g;
+  Game game;
+  while(game.isRunning()) {
+    game.update();
+    game.render();
+  }
   return 0;
 }
