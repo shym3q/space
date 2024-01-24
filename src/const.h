@@ -3,6 +3,13 @@
 
 #define WINDOW_WIDTH 1920u
 #define WINDOW_HEIGHT 1080u
-#define MAX_SPEED 3
+
+#define PLAYER_WIDTH 50.f
+#define PLAYER_HEIGHT 10.f
+#define PLAYER_X_CENTER (PLAYER_WIDTH / 2.f)
+#define PLAYER_Y_CENTER (PLAYER_HEIGHT / 2.f)
+
+#define MAX_SPEED 3.3
+#define MAX_ROTATION_SPEED 0.7
 
 #endif // !CONST_H
