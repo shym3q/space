@@ -1,7 +1,7 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAME_HPP
+#define GAME_HPP
 
-#include "../entity/player.h"
+#include "../entity/player.hpp"
 
 class Game {
   sf::RenderWindow *window;
@@ -17,4 +17,4 @@ public:
   void pollEvents();
 };
 
-#endif // !GAME_H
+#endif // !GAME_HPP

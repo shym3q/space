@@ -1,8 +1,5 @@
-// #define WINDOW_WIDTH 1920u
-// #define WINDOW_HEIGHT 1080u
-
-#include "game.h"
-#include "../const.h"
+#include "game.hpp"
+#include "../const.hpp"
 
 void Game::initWindow() {
   window = new sf::RenderWindow{{WINDOW_WIDTH, WINDOW_HEIGHT}, GAME_NAME};
@@ -11,7 +8,6 @@ void Game::initWindow() {
 
 Game::Game() {
   initWindow();
-  player.init();
 }
 
 Game::~Game() {
@@ -24,12 +20,16 @@ const bool Game::isRunning() const {
 
 void Game::update() {
   pollEvents();
-  player.move();
+  player.update();
+  for(auto& bullet : player.bullets)
+    bullet.update();
 }
 
 void Game::render() {
   window->clear();
   window->draw(player.body);
+  for(auto& bullet : player.bullets)
+    window->draw(bullet.body);
   window->display();
 }
 

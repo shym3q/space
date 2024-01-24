@@ -1,29 +1,23 @@
 #define DEGREES_TO_RADIANS(x) (x * M_PI / 180.0)
+#define X(a, b) (a * std::cos(DEGREES_TO_RADIANS(b)))
+#define Y(a, b) (a * std::sin(DEGREES_TO_RADIANS(b)))
 
-#include <iostream>
 #include <math.h>
-#include "player.h"
-#include "../const.h"
+#include "player.hpp"
+#include "bullet.hpp"
+#include "../const.hpp"
 
 
 Player::Player() {
-
-}
-
-void Player::init() {
   body.setPosition(sf::Vector2f(400.f, 400.f));
   body.setSize(sf::Vector2f(PLAYER_WIDTH, PLAYER_HEIGHT));   
   body.setFillColor(sf::Color::Blue);
   body.setOutlineColor(sf::Color::Green);
   body.setOutlineThickness(1.f);
   body.setOrigin(PLAYER_X_CENTER, PLAYER_Y_CENTER);
-  vel_x = 0;
-  vel_y = 0;
-  vel = 0;
-  vel_rotation = 0;
 }
 
-void Player::move() {
+void Player::update() {
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && vel > -MAX_SPEED) {
     vel -= 0.03;
   }
@@ -37,7 +31,16 @@ void Player::move() {
     vel_rotation += 0.1;
   }
 
-  body.move(sf::Vector2f(vel * std::cos(DEGREES_TO_RADIANS(body.getRotation())), vel * std::sin(DEGREES_TO_RADIANS(body.getRotation()))));
+  if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+    shot = false;
+
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && !shot) {
+    bullets.emplace_back(body.getRotation(), body.getPosition());
+    shot = true;
+  }
+
+  int degree = body.getRotation();
+  body.move(sf::Vector2f(X(vel, degree), Y(vel, degree)));
   body.rotate(vel_rotation);
 
   if(body.getPosition().x < LEFT_LIMIT)
@@ -48,5 +51,4 @@ void Player::move() {
     body.move(sf::Vector2f(0, LOWER_LIMIT+PLAYER_WIDTH));
   if(body.getPosition().y > LOWER_LIMIT)
     body.move(sf::Vector2f(0, -(LOWER_LIMIT+PLAYER_WIDTH)));
-
 }
