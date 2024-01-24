@@ -1,7 +1,7 @@
-#include "../entity/player.h"
-
 #ifndef GAME_H
 #define GAME_H
+
+#include "../entity/player.h"
 
 class Game {
   sf::RenderWindow *window;

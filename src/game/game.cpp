@@ -5,7 +5,7 @@
 #include "../const.h"
 
 void Game::initWindow() {
-  window = new sf::RenderWindow{{WINDOW_WIDTH, WINDOW_HEIGHT}, "Space"};
+  window = new sf::RenderWindow{{WINDOW_WIDTH, WINDOW_HEIGHT}, GAME_NAME};
   window->setFramerateLimit(144);
 }
 
