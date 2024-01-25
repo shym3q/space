@@ -1,9 +1,9 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
+#include <vector>
 #include "base.hpp"
 #include "bullet/bullet.hpp"
-#include <vector>
 
 class Character : public Entity {
 public:

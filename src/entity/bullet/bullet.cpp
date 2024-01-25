@@ -1,8 +1,3 @@
-#define DEGREES_TO_RADIANS(x) (x * M_PI / 180.0)
-#define X(a, b) (a * std::cos(DEGREES_TO_RADIANS(b)))
-#define Y(a, b) (a * std::sin(DEGREES_TO_RADIANS(b)))
-
-#include <math.h>
 #include "bullet.hpp"
 #include "../../const.hpp"
 
@@ -22,11 +17,11 @@ void Bullet::update() {
   body.move(sf::Vector2f(X(vel, degree), Y(vel, degree)));
 
   if(body.getPosition().x < LEFT_LIMIT)
-    body.move(sf::Vector2f(RIGHT_LIMIT+PLAYER_WIDTH, 0));
+    body.move(sf::Vector2f(RIGHT_LIMIT+CHARACTER_WIDTH, 0));
   if(body.getPosition().x > RIGHT_LIMIT)
-    body.move(sf::Vector2f(-(RIGHT_LIMIT+PLAYER_WIDTH), 0));
+    body.move(sf::Vector2f(-(RIGHT_LIMIT+CHARACTER_WIDTH), 0));
   if(body.getPosition().y < UPPER_LIMIT)
-    body.move(sf::Vector2f(0, LOWER_LIMIT+PLAYER_WIDTH));
+    body.move(sf::Vector2f(0, LOWER_LIMIT+CHARACTER_WIDTH));
   if(body.getPosition().y > LOWER_LIMIT)
-    body.move(sf::Vector2f(0, -(LOWER_LIMIT+PLAYER_WIDTH)));
+    body.move(sf::Vector2f(0, -(LOWER_LIMIT+CHARACTER_WIDTH)));
 }

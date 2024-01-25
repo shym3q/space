@@ -8,7 +8,7 @@ class Game {
   sf::RenderWindow *window;
   sf::Event event;
   Player player;
-  Enemy enemy;
+  std::vector<Enemy> enemies;
   void initWindow();
 public:
   Game();
