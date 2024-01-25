@@ -10,7 +10,7 @@ FetchContent_Declare(SFML
     GIT_TAG 2.6.x)
 FetchContent_MakeAvailable(SFML)
 
-add_executable(space src/main.cpp src/game/game.cpp src/entity/player.cpp src/entity/bullet.cpp)
+add_executable(space src/main.cpp src/game/game.cpp src/entity/player/player.cpp src/entity/bullet/bullet.cpp src/entity/enemy/enemy.cpp)
 target_link_libraries(space PRIVATE sfml-graphics)
 target_compile_features(space PRIVATE cxx_std_17)
 

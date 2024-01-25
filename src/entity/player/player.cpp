@@ -4,8 +4,7 @@
 
 #include <math.h>
 #include "player.hpp"
-#include "bullet.hpp"
-#include "../const.hpp"
+#include "../../const.hpp"
 
 
 Player::Player() {

@@ -21,6 +21,7 @@ const bool Game::isRunning() const {
 void Game::update() {
   pollEvents();
   player.update();
+  enemy.update();
   for(auto it = player.bullets.begin(); it != player.bullets.end();) {
     if(!it->isAlive) {
       it = player.bullets.erase(it);
@@ -34,6 +35,7 @@ void Game::update() {
 void Game::render() {
   window->clear();
   window->draw(player.body);
+  window->draw(enemy.body);
   for(auto& bullet : player.bullets)
     window->draw(bullet.body);
   window->display();

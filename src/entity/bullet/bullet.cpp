@@ -4,7 +4,7 @@
 
 #include <math.h>
 #include "bullet.hpp"
-#include "../const.hpp"
+#include "../../const.hpp"
 
 Bullet::Bullet(float deg, sf::Vector2f pos) {
   vel = BULLET_SPEED;

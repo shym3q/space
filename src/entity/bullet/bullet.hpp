@@ -1,7 +1,7 @@
 #ifndef BULLET_HPP
 #define BULLET_HPP
 
-#include "base.hpp"
+#include "../base.hpp"
 #include <SFML/System/Clock.hpp>
 
 class Bullet : public Entity {
