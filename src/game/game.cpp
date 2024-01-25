@@ -21,8 +21,14 @@ const bool Game::isRunning() const {
 void Game::update() {
   pollEvents();
   player.update();
-  for(auto& bullet : player.bullets)
-    bullet.update();
+  for(auto it = player.bullets.begin(); it != player.bullets.end();) {
+    if(!it->isAlive) {
+      it = player.bullets.erase(it);
+      continue;
+    }
+    it->update();
+    ++it;
+  }
 }
 
 void Game::render() {
