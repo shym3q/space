@@ -21,7 +21,7 @@ const bool Game::isRunning() const {
 void Game::update() {
   pollEvents();
   player.update();
-  if(enemies.size() != 2)
+  if(enemies.size() != 3)
     enemies.emplace_back(&player);
   for(auto it = player.bullets.begin(); it != player.bullets.end();) {
     if(!it->isAlive) {

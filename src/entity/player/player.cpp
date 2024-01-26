@@ -3,7 +3,7 @@
 
 
 Player::Player() {
-  body.setPosition(sf::Vector2f(400.f, 400.f));
+  body.setPosition(sf::Vector2f(800.f, 800.f));
   body.setSize(sf::Vector2f(CHARACTER_WIDTH, CHARACTER_HEIGHT));   
   body.setFillColor(sf::Color::Blue);
   body.setOutlineColor(sf::Color::Green);
@@ -33,7 +33,7 @@ void Player::update() {
     shot = true;
   }
 
-  int degree = body.getRotation();
+  float degree = body.getRotation();
   body.move(sf::Vector2f(X(vel, degree), Y(vel, degree)));
   body.rotate(vel_rotation);
 
