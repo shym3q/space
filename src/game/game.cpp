@@ -1,3 +1,6 @@
+#define RANDOM_COORDINATE(i) random.generateCoordinate(i)
+#define RANDOM_VELOCITY random.generateVelocity()
+
 #include "game.hpp"
 
 void Game::initWindow() {
@@ -7,6 +10,9 @@ void Game::initWindow() {
 
 Game::Game() {
   initWindow();
+  gameObjects.push_back(&player);
+  for(auto i = 0; i < 4; i++)
+    gameObjects.push_back(new Enemy(&player, RANDOM_COORDINATE(COORDINATE_X), RANDOM_COORDINATE(COORDINATE_Y), RANDOM_VELOCITY));
 }
 
 Game::~Game() {
@@ -19,28 +25,20 @@ const bool Game::isRunning() const {
 
 void Game::update() {
   pollEvents();
-  player.update();
-  if(enemies.size() != 3)
-    enemies.emplace_back(&player, random.generateCoordinate(COORDINATE_X), random.generateCoordinate(COORDINATE_Y), random.generateVelocity());
-  for(auto it = player.bullets.begin(); it != player.bullets.end();) {
-    if(!it->isAlive) {
-      it = player.bullets.erase(it);
+  for(auto object = gameObjects.begin(); object != gameObjects.end();) {
+    if(!(*object)->isAlive) {
+      object = gameObjects.erase(object);
       continue;
     }
-    it->update();
-    ++it;
+    (*object)->update();
+    ++object;
   }
-  for(auto& enemy : enemies)
-    enemy.update();
 }
 
 void Game::render() {
   window->clear();
-  window->draw(player.body);
-  for(auto& enemy : enemies)
-    window->draw(enemy.body);
-  for(auto& bullet : player.bullets)
-    window->draw(bullet.body);
+  for(auto& object : gameObjects)
+    object->draw(window);
   window->display();
 }
 

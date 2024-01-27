@@ -23,14 +23,6 @@ void Player::update() {
     rotationSpeed += 0.1;
   }
 
-  if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-    shot = false;
-
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && !shot) {
-    bullets.emplace_back(body.getRotation(), body.getPosition());
-    shot = true;
-  }
-
   float degree = body.getRotation();
   body.move(sf::Vector2f(X(velocity, degree), Y(velocity, degree)));
   body.rotate(rotationSpeed);

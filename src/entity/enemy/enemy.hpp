@@ -1,10 +1,10 @@
 #ifndef ENEMY_HPP
 #define ENEMY_HPP
 
-#include "../character.hpp"
+// #include "../base.hpp"
 #include "../player/player.hpp"
 
-class Enemy : public Character {
+class Enemy : public Entity {
   Player *playerReference;
 public:
   Enemy(Player*, float, float, float);

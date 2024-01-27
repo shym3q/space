@@ -16,7 +16,14 @@ protected:
   float rotationSpeed = 0;
 public:
   sf::RectangleShape body;
+  bool isAlive = true;
+
   virtual void update() = 0;
+
+  virtual void draw(sf::RenderWindow* window) {
+    window->draw(body); 
+  }
+
   virtual void edgeCheck() {
     auto position = body.getPosition();
     if(position.x < LEFT_LIMIT)

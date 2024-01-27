@@ -1,9 +1,9 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-#include "../character.hpp"
+#include "../base.hpp"
 
-class Player : public Character {
+class Player : public Entity {
 public:
   Player();
   void update() override;

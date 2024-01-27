@@ -1,7 +1,6 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "../entity/player/player.hpp"
 #include "../entity/enemy/enemy.hpp"
 #include "../lib/random.hpp"
 
@@ -10,7 +9,7 @@ class Game {
   sf::Event event;
   Player player;
   std::vector<Enemy> enemies;
-  std::vector<Character*> gameObjects;
+  std::vector<Entity*> gameObjects;
   Random random;
   void initWindow();
 public:

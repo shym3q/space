@@ -10,8 +10,10 @@ Bullet::Bullet(float deg, sf::Vector2f pos) {
 }
 
 void Bullet::update() {
-  if(timer.getElapsedTime().asSeconds() > BULLET_LIFETIME)
+  if(timer.getElapsedTime().asSeconds() > BULLET_LIFETIME) {
     isAlive = false;
+    return;
+  }
   int degree = body.getRotation();
   body.move(sf::Vector2f(X(velocity, degree), Y(velocity, degree)));
   
