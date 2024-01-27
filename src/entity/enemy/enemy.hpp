@@ -7,7 +7,7 @@
 class Enemy : public Character {
   Player *player_reference;
 public:
-  Enemy(Player*);
+  Enemy(Player*, float, float);
   void update();
 };
 

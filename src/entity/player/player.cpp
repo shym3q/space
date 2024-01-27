@@ -1,6 +1,4 @@
 #include "player.hpp"
-#include "../../const.hpp"
-
 
 Player::Player() {
   body.setPosition(sf::Vector2f(800.f, 800.f));
@@ -36,13 +34,6 @@ void Player::update() {
   float degree = body.getRotation();
   body.move(sf::Vector2f(X(vel, degree), Y(vel, degree)));
   body.rotate(vel_rotation);
-
-  if(body.getPosition().x < LEFT_LIMIT)
-    body.move(sf::Vector2f(RIGHT_LIMIT+CHARACTER_WIDTH, 0));
-  if(body.getPosition().x > RIGHT_LIMIT)
-    body.move(sf::Vector2f(-(RIGHT_LIMIT+CHARACTER_WIDTH), 0));
-  if(body.getPosition().y < UPPER_LIMIT)
-    body.move(sf::Vector2f(0, LOWER_LIMIT+CHARACTER_WIDTH));
-  if(body.getPosition().y > LOWER_LIMIT)
-    body.move(sf::Vector2f(0, -(LOWER_LIMIT+CHARACTER_WIDTH)));
+  
+  edge_check();
 }

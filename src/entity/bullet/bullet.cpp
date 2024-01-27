@@ -1,5 +1,4 @@
 #include "bullet.hpp"
-#include "../../const.hpp"
 
 Bullet::Bullet(float deg, sf::Vector2f pos) {
   vel = BULLET_SPEED;
@@ -15,13 +14,6 @@ void Bullet::update() {
     isAlive = false;
   int degree = body.getRotation();
   body.move(sf::Vector2f(X(vel, degree), Y(vel, degree)));
-
-  if(body.getPosition().x < LEFT_LIMIT)
-    body.move(sf::Vector2f(RIGHT_LIMIT+CHARACTER_WIDTH, 0));
-  if(body.getPosition().x > RIGHT_LIMIT)
-    body.move(sf::Vector2f(-(RIGHT_LIMIT+CHARACTER_WIDTH), 0));
-  if(body.getPosition().y < UPPER_LIMIT)
-    body.move(sf::Vector2f(0, LOWER_LIMIT+CHARACTER_WIDTH));
-  if(body.getPosition().y > LOWER_LIMIT)
-    body.move(sf::Vector2f(0, -(LOWER_LIMIT+CHARACTER_WIDTH)));
+  
+  edge_check();
 }
