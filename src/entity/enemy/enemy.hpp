@@ -9,6 +9,8 @@ class Enemy : public Character {
 public:
   Enemy(Player*, float, float);
   void update();
+  bool player_changed_axis = false;
+  sf::Vector2f last_player_postion;
 };
 
 #endif // !ENEMY_HPP
