@@ -8,7 +8,7 @@ class Bullet : public Entity {
   sf::Clock timer;
 public:
   Bullet(float, sf::Vector2f);
-  void update();
+  void update() override;
   bool isAlive = true;
 };
 

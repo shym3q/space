@@ -1,5 +1,4 @@
 #include "game.hpp"
-#include "../lib/const.hpp"
 
 void Game::initWindow() {
   window = new sf::RenderWindow{{WINDOW_WIDTH, WINDOW_HEIGHT}, GAME_NAME};
@@ -22,7 +21,7 @@ void Game::update() {
   pollEvents();
   player.update();
   if(enemies.size() != 3)
-    enemies.emplace_back(&player, random.generate(COORDINATE_X), random.generate(COORDINATE_Y));
+    enemies.emplace_back(&player, random.generateCoordinate(COORDINATE_X), random.generateCoordinate(COORDINATE_Y), random.generateVelocity());
   for(auto it = player.bullets.begin(); it != player.bullets.end();) {
     if(!it->isAlive) {
       it = player.bullets.erase(it);

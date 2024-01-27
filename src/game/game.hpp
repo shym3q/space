@@ -10,6 +10,7 @@ class Game {
   sf::Event event;
   Player player;
   std::vector<Enemy> enemies;
+  std::vector<Character*> gameObjects;
   Random random;
   void initWindow();
 public:

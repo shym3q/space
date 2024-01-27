@@ -6,7 +6,7 @@
 class Player : public Character {
 public:
   Player();
-  void update();
+  void update() override;
 };
 
 #endif // !PLAYER_HPP

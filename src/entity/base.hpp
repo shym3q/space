@@ -12,12 +12,12 @@
 
 class Entity {
 protected:
-  float vel = 0;
-  float vel_rotation = 0;
+  float velocity = 0;
+  float rotationSpeed = 0;
 public:
   sf::RectangleShape body;
   virtual void update() = 0;
-  virtual void edge_check() {
+  virtual void edgeCheck() {
     auto position = body.getPosition();
     if(position.x < LEFT_LIMIT)
       body.move(sf::Vector2f(RIGHT_LIMIT+CHARACTER_WIDTH, 0));

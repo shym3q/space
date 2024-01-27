@@ -5,12 +5,10 @@
 #include "../player/player.hpp"
 
 class Enemy : public Character {
-  Player *player_reference;
+  Player *playerReference;
 public:
-  Enemy(Player*, float, float);
-  void update();
-  bool player_changed_axis = false;
-  sf::Vector2f last_player_postion;
+  Enemy(Player*, float, float, float);
+  void update() override;
 };
 
 #endif // !ENEMY_HPP

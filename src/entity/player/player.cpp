@@ -10,17 +10,17 @@ Player::Player() {
 }
 
 void Player::update() {
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && vel > -MAX_SPEED) {
-    vel -= 0.03;
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S) && velocity > -MAX_SPEED) {
+    velocity -= 0.03;
   }
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && vel < MAX_SPEED) {
-    vel += 0.05;
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W) && velocity < MAX_SPEED) {
+    velocity += 0.05;
   }
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && vel_rotation > -MAX_ROTATION_SPEED) {
-    vel_rotation -= 0.1;
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A) && rotationSpeed > -MAX_ROTATION_SPEED) {
+    rotationSpeed -= 0.1;
   }
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && vel_rotation < MAX_ROTATION_SPEED) {
-    vel_rotation += 0.1;
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D) && rotationSpeed < MAX_ROTATION_SPEED) {
+    rotationSpeed += 0.1;
   }
 
   if(!sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
@@ -32,8 +32,8 @@ void Player::update() {
   }
 
   float degree = body.getRotation();
-  body.move(sf::Vector2f(X(vel, degree), Y(vel, degree)));
-  body.rotate(vel_rotation);
+  body.move(sf::Vector2f(X(velocity, degree), Y(velocity, degree)));
+  body.rotate(rotationSpeed);
   
-  edge_check();
+  edgeCheck();
 }

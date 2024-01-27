@@ -2,30 +2,29 @@
 
 #include "enemy.hpp"
 
-Enemy::Enemy(Player *p, float x, float y) : player_reference(p) {
+Enemy::Enemy(Player *p, float x, float y, float vel) : playerReference(p) {
   body.setSize(sf::Vector2f(CHARACTER_WIDTH, CHARACTER_HEIGHT));   
   body.setFillColor(sf::Color::Red);
   body.setOutlineColor(sf::Color::Green);
   body.setOutlineThickness(1.f);
   body.setOrigin(CHARACTER_X_CENTER, CHARACTER_Y_CENTER);
   body.setPosition(sf::Vector2f(x, y));
-  vel = MAX_SPEED - 1.7;
+  velocity = vel;
 }
 
 void Enemy::update() {
-  float enemy_degree = body.getRotation();
-
-  auto player_position = player_reference->body.getPosition();
-  auto enemy_position = body.getPosition();
-  auto target_degree = TARGET_DEGREE(player_position, enemy_position);
-  target_degree = (target_degree < 0.0) ? 360.0 + target_degree : target_degree;
-  auto diff = target_degree - enemy_degree;
+  float enemyDegree = body.getRotation();
+  auto playerPosition = playerReference->body.getPosition();
+  auto enemyPosition = body.getPosition();
+  auto targetDegree = TARGET_DEGREE(playerPosition, enemyPosition);
+  targetDegree = (targetDegree < 0.0) ? 360.0 + targetDegree : targetDegree;
+  auto diff = targetDegree - enemyDegree;
   if(diff > 180.0 || diff < -180.0)
     body.rotate(-diff * 0.0084);
   else
     body.rotate(diff * 0.0084);
 
-  body.move(sf::Vector2f(X(vel, enemy_degree), Y(vel, enemy_degree)));
-  edge_check();
+  body.move(sf::Vector2f(X(velocity, enemyDegree), Y(velocity, enemyDegree)));
+  edgeCheck();
 }
 
