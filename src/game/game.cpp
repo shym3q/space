@@ -13,7 +13,7 @@ void Game::initWindow() {
 Game::Game() {
   initWindow();
   gameObjects.push_back(&player);
-  for(auto i = 0; i < 6; i++)
+  for(auto i = 0; i < 3; i++)
     gameObjects.push_back(new Enemy(&player, RANDOM_COORDINATE(COORDINATE_X), RANDOM_COORDINATE(COORDINATE_Y), RANDOM_VELOCITY));
 }
 
@@ -28,6 +28,7 @@ const bool Game::isRunning() const {
 
 void Game::update() {
   pollEvents();
+  spawnEnemies();
   for(auto object = gameObjects.begin(); object != gameObjects.end();) {
     if(!(*object)->isAlive) {
       object = gameObjects.erase(object);
@@ -60,5 +61,12 @@ void Game::pollEvents() {
       default:
         continue;
     }
+  }
+}
+
+void Game::spawnEnemies() {
+  if(timer.getElapsedTime().asSeconds() > 2.0) {
+    gameObjects.push_back(new Enemy(&player, RANDOM_COORDINATE(COORDINATE_X), RANDOM_COORDINATE(COORDINATE_Y), RANDOM_VELOCITY));
+    timer.restart();
   }
 }

@@ -1,6 +1,8 @@
 #define TARGET_DEGREE(p, e) (RADIANS_TO_DEGREES(std::atan2(p.y-e.y, p.x-e.x)))
 
+#include <iostream>
 #include "enemy.hpp"
+#include "../bullet/bullet.hpp"
 
 Enemy::Enemy(Player *p, float x, float y, float vel) : playerReference(p) {
   body.setSize(sf::Vector2f(CHARACTER_WIDTH, CHARACTER_HEIGHT));   

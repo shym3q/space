@@ -9,8 +9,10 @@ class Game {
   sf::Event event;
   Player player;
   std::vector<Entity*> gameObjects;
+  sf::Clock timer;
   Random random;
   void initWindow();
+  void spawnEnemies();
 public:
   Game();
   ~Game();
