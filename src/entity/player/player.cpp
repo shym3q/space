@@ -26,6 +26,6 @@ void Player::update() {
   edgeCheck();
 }
 
-const bool Player::collision() const {
+const bool Player::collision() {
   return true;
 }

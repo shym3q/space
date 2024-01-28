@@ -6,7 +6,7 @@ Bullet::Bullet(float deg, sf::Vector2f pos, std::vector<Entity*>* obj) : objects
   body.setFillColor(sf::Color::Yellow);
   body.setOrigin(sf::Vector2f(BULLET_X_CENTER, BULLET_Y_CENTER));
   body.setRotation(deg);
-  body.setPosition(pos.x + X(CHARACTER_WIDTH, deg), pos.y + Y(CHARACTER_WIDTH, deg));
+  body.setPosition(pos.x + X(CHARACTER_WIDTH*1.9, deg), pos.y + Y(CHARACTER_HEIGHT*1.9, deg));
 }
 
 void Bullet::update() {
@@ -28,6 +28,6 @@ void Bullet::update() {
   edgeCheck();
 }
 
-const bool Bullet::collision() const {
+const bool Bullet::collision() {
   return false;
 }

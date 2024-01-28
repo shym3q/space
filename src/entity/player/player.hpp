@@ -7,7 +7,7 @@ class Player : public Entity {
 public:
   Player();
   void update() override;
-  const bool collision() const override;
+  const bool collision() override;
   bool canShoot = true;
 private:
 };

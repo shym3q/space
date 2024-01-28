@@ -13,7 +13,7 @@ void Game::initWindow() {
 Game::Game() {
   initWindow();
   gameObjects.push_back(&player);
-  for(auto i = 0; i < 4; i++)
+  for(auto i = 0; i < 6; i++)
     gameObjects.push_back(new Enemy(&player, RANDOM_COORDINATE(COORDINATE_X), RANDOM_COORDINATE(COORDINATE_Y), RANDOM_VELOCITY));
 }
 

@@ -28,6 +28,7 @@ void Enemy::update() {
   edgeCheck();
 }
 
-const bool Enemy::collision() const {
+const bool Enemy::collision() {
+  isAlive = false;
   return true;
 }

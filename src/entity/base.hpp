@@ -24,7 +24,7 @@ public:
     window->draw(body); 
   }
 
-  virtual const bool collision() const = 0;
+  virtual const bool collision() = 0;
 
   virtual void edgeCheck() {
     auto position = body.getPosition();
