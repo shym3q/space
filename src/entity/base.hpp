@@ -24,6 +24,8 @@ public:
     window->draw(body); 
   }
 
+  virtual const bool collision() const = 0;
+
   virtual void edgeCheck() {
     auto position = body.getPosition();
     if(position.x < LEFT_LIMIT)

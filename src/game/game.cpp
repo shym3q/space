@@ -2,10 +2,12 @@
 #define RANDOM_VELOCITY random.generateVelocity()
 
 #include "game.hpp"
+#include "../entity/bullet/bullet.hpp"
 
 void Game::initWindow() {
   window = new sf::RenderWindow{{WINDOW_WIDTH, WINDOW_HEIGHT}, GAME_NAME};
   window->setFramerateLimit(144);
+  window->setKeyRepeatEnabled(false);
 }
 
 Game::Game() {
@@ -17,6 +19,7 @@ Game::Game() {
 
 Game::~Game() {
   delete window;
+  gameObjects.clear();
 }
 
 const bool Game::isRunning() const {
@@ -51,6 +54,8 @@ void Game::pollEvents() {
       case sf::Event::KeyPressed:
         if(event.key.code == sf::Keyboard::Escape)
           window->close();
+        else if(event.key.code == sf::Keyboard::J)
+          gameObjects.push_back(new Bullet(player.body.getRotation(), player.body.getPosition(), &gameObjects));
         break;
       default:
         continue;

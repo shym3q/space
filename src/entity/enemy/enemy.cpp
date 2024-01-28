@@ -28,3 +28,6 @@ void Enemy::update() {
   edgeCheck();
 }
 
+const bool Enemy::collision() const {
+  return true;
+}

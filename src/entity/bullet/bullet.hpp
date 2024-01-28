@@ -1,14 +1,15 @@
 #ifndef BULLET_HPP
 #define BULLET_HPP
 
-#include <SFML/System/Clock.hpp>
 #include "../base.hpp"
 
 class Bullet : public Entity {
   sf::Clock timer;
 public:
-  Bullet(float, sf::Vector2f);
+  Bullet(float, sf::Vector2f, std::vector<Entity*>*);
+  std::vector<Entity*> *objects;
   void update() override;
+  const bool collision() const override;
 };
 
 #endif // !BULLET_HPP

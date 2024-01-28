@@ -9,6 +9,7 @@ class Enemy : public Entity {
 public:
   Enemy(Player*, float, float, float);
   void update() override;
+  const bool collision() const override;
 };
 
 #endif // !ENEMY_HPP
