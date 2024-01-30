@@ -7,6 +7,7 @@ Player::Player() {
   body.setOutlineColor(sf::Color::Green);
   body.setOutlineThickness(1.f);
   body.setOrigin(CHARACTER_X_CENTER, CHARACTER_Y_CENTER);
+  health = 3;
 }
 
 void Player::update() {

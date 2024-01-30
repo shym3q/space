@@ -37,6 +37,7 @@ void Game::update() {
     (*object)->update();
     ++object;
   }
+  checkCollision();
 }
 
 void Game::render() {
@@ -68,5 +69,17 @@ void Game::spawnEnemies() {
   if(timer.getElapsedTime().asSeconds() > 2.0) {
     gameObjects.push_back(new Enemy(&player, RANDOM_COORDINATE(COORDINATE_X), RANDOM_COORDINATE(COORDINATE_Y), RANDOM_VELOCITY));
     timer.restart();
+  }
+}
+
+void Game::checkCollision() {
+  auto bounds = player.body.getGlobalBounds();
+  for (auto& obj : gameObjects) {
+    if(bounds.intersects(obj->body.getGlobalBounds()) && obj->body.getPosition() != player.body.getPosition()) {
+      obj->isAlive = false;
+      if(--player.health == 0)
+        player.isAlive = false;
+      return;
+    }
   }
 }

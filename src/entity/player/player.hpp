@@ -8,8 +8,7 @@ public:
   Player();
   void update() override;
   const bool collision() override;
-  bool canShoot = true;
-private:
+  int health = 3;
 };
 
 #endif // !PLAYER_HPP

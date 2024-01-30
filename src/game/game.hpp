@@ -13,6 +13,7 @@ class Game {
   Random random;
   void initWindow();
   void spawnEnemies();
+  void checkCollision(); 
 public:
   Game();
   ~Game();
